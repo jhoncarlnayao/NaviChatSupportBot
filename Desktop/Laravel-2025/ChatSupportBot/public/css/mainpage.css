@@ -1,0 +1,27 @@
+body{
+    margin: 40px;
+    overflow: hidden;
+}
+
+#message-container{
+    overflow: hidden;
+    height: 35pc;
+    width: 110pc;
+    /* background-color: #f3f3f3; */
+    margin: 30px;
+}
+
+#modal-info-icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 40pc;
+}
+
+#modal-info-icon{
+    width: 70pc;
+    z-index: 99;
+    display: none;
+    
+}

@@ -1,0 +1,16 @@
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\bin\Debug\net8.0-windows\IT13CLASSCODE.exe
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\bin\Debug\net8.0-windows\IT13CLASSCODE.deps.json
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\bin\Debug\net8.0-windows\IT13CLASSCODE.runtimeconfig.json
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\bin\Debug\net8.0-windows\IT13CLASSCODE.dll
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\bin\Debug\net8.0-windows\IT13CLASSCODE.pdb
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.Form1.resources
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.csproj.GenerateResource.cache
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.AssemblyInfoInputs.cache
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.AssemblyInfo.cs
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.csproj.CoreCompileInputs.cache
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.dll
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\refint\IT13CLASSCODE.dll
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.pdb
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\IT13CLASSCODE.genruntimeconfig.cache
+C:\Users\Gerry Untalan\source\repos\IT13CLASSCODE\IT13CLASSCODE\obj\Debug\net8.0-windows\ref\IT13CLASSCODE.dll

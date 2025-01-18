@@ -1,0 +1,7 @@
+C:\Users\Gerry Untalan\source\repos\IT13PROJECT\IT13PROJECT\bin\Debug\IT13PROJECT.exe.config
+C:\Users\Gerry Untalan\source\repos\IT13PROJECT\IT13PROJECT\bin\Debug\IT13PROJECT.exe
+C:\Users\Gerry Untalan\source\repos\IT13PROJECT\IT13PROJECT\bin\Debug\IT13PROJECT.pdb
+C:\Users\Gerry Untalan\source\repos\IT13PROJECT\IT13PROJECT\obj\Debug\IT13PROJECT.csproj.AssemblyReference.cache
+C:\Users\Gerry Untalan\source\repos\IT13PROJECT\IT13PROJECT\obj\Debug\IT13PROJECT.csproj.CoreCompileInputs.cache
+C:\Users\Gerry Untalan\source\repos\IT13PROJECT\IT13PROJECT\obj\Debug\IT13PROJECT.exe
+C:\Users\Gerry Untalan\source\repos\IT13PROJECT\IT13PROJECT\obj\Debug\IT13PROJECT.pdb
