@@ -9,20 +9,20 @@
     @vite('resources/css/app.css', 'resources/js/app.js')
     <link rel="stylesheet" href="{{ asset('css/mainpage.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <script>
         window.onload = function () {
             axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         };
     </script>
 
-</head>
+</head>asd
 
 <body class=" dark:bg-neutral-900">
     <div
-        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
+    class="flex flex-col bg-white/10 backdrop-blur-md border border-white/20 shadow-sm rounded-xl dark:bg-neutral-900/30 dark:border-neutral-700 dark:shadow-neutral-700/70">
         <div
-            class="flex flex-row items-center  bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5 dark:bg-neutral-900 dark:border-neutral-700">
+            class="flex flex-row items-center  bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5 dark:bg-neutral-900/20 dark:border-neutral-700">
             <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full mr-7">
             <h3 class="text-xl font-bold text-gray-800 dark:text-white">
                 Navi Chat Support Bot
@@ -47,7 +47,7 @@
             <!-- Textarea -->
             <div class="relative">
                 <textarea id="hs-textarea-ex-2"
-                    class="p-4 pb-12 block w-full bg-gray-100 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    class=" p-4 pb-12 block w-full bg-gray-100 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     placeholder="Ask me anything..." data-hs-textarea-auto-height=""></textarea>
 
                 <!-- Toolbar -->
@@ -177,15 +177,40 @@
         const message = textarea.value.trim();
         if (message === '') return;
 
+
+
         // ✅ User's message
-        messageContainer.innerHTML += `<div class="text-right mb-2 p-2 bg-blue-500 text-white rounded-lg max-w-xs ml-auto">${message}</div>`;
+        messageContainer.innerHTML += ` <li class="flex ms-auto gap-x-2 sm:gap-x-4">
+    <div class="grow text-end space-y-3">
+        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
+        <p class="text-sm text-white">
+        ${message}
+        </p>
+    </div>
+    </div>
+    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
+    <span class="text-sm font-medium text-white leading-none"><img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full "></span>
+    </span>
+</li>`;
 
         // ✅ Send message to backend
         axios.post(chatSendRoute, { message: message })
             .then(response => {
                 const botReply = response.data.response;
                 // ✅ Bot's response
-                messageContainer.innerHTML += `<div class="text-left mb-2 p-2 bg-gray-200 text-gray-800 rounded-lg max-w-xs">${botReply}</div>`;
+                messageContainer.innerHTML += `<li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7">
+                    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
+    <span class="text-xl font-medium text-white leading-none"><img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full "></span>
+    </span>
+    <div class="grow text-start space-y-3">
+        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
+        <p class="text-sm text-white">
+        ${botReply}
+        </p>
+    </div>
+    </div>
+
+</li>`;
                 messageContainer.scrollTop = messageContainer.scrollHeight;  // Auto-scroll
             })
             .catch(error => {
@@ -202,6 +227,8 @@
             sendButton.click();
         }
     });
+
+    // !!! MODAL FOR INFO ICON
     const openModal = document.getElementById('info-icon');
     const closeModal = document.getElementById('close-modal-info-icon');
     const myModal = document.getElementById('modal-info-icon');

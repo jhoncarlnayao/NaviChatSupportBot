@@ -1,7 +1,14 @@
-body{
+body {
     margin: 40px;
     overflow: hidden;
+    background-image: url('/img/background.jpg');
+    background-size: cover; /* Or try 'auto' */
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
 }
+
 
 #message-container{
     overflow: hidden;
