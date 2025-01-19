@@ -2,7 +2,7 @@ body {
     margin: 40px;
     overflow: hidden;
     background-image: url('/img/background.jpg');
-    background-size: cover; /* Or try 'auto' */
+    background-size: cover; 
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -10,11 +10,16 @@ body {
 }
 
 
-#message-container{
-    overflow: hidden;
+
+
+#message-container {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #5e5e5e;
+    overflow-y: auto;
+    scroll-margin-block-end: 50px;
     height: 35pc;
     width: 110pc;
-    /* background-color: #f3f3f3; */
+    scroll-behavior: smooth;
     margin: 30px;
 }
 

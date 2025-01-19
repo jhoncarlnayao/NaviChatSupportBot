@@ -16,7 +16,7 @@
         };
     </script>
 
-</head>asd
+</head>
 
 <body class=" dark:bg-neutral-900">
     <div
@@ -197,20 +197,22 @@
         axios.post(chatSendRoute, { message: message })
             .then(response => {
                 const botReply = response.data.response;
-                // ✅ Bot's response
-                messageContainer.innerHTML += `<li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7">
-                    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
-    <span class="text-xl font-medium text-white leading-none"><img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full "></span>
+              // ✅ Bot's response
+messageContainer.innerHTML += `<li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7 ">
+    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
+        <span class="text-xl font-medium text-white leading-none">
+            <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full ">
+        </span>
     </span>
-    <div class="grow text-start space-y-3">
-        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
-        <p class="text-sm text-white">
-        ${botReply}
-        </p>
+    <div class="grow text-start space-y-3 ">
+        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm ">
+            <div class="text-sm text-white">
+                ${botReply}
+            </div>
+        </div>
     </div>
-    </div>
-
 </li>`;
+
                 messageContainer.scrollTop = messageContainer.scrollHeight;  // Auto-scroll
             })
             .catch(error => {

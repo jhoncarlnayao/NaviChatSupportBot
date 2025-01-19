@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Feedback;
 
 class NaviBotController extends Controller
 {
@@ -20,9 +21,14 @@ class NaviBotController extends Controller
     {
         $responses = [
             'hello' => 'Hi there! How can I help you today?',
-            'book' => 'Please provide your travel details to proceed with the booking.',
-            'lost item' => 'Please describe the item and where you lost it.',
+            'hi' => 'Hi there! How can I help you today?',
             'thank you' => 'You\'re welcome! Let me know if you need further assistance.',
+            'promos for today' => '<img src="' . asset('img/promo1.png') . '" alt="Promo Image" />
+            <img src="' . asset('img/promo1.png') . '" alt="Promo Image" />
+            <img src="' . asset('img/promo1.png') . '" alt="Promo Image" />',
+
+
+
         ];
 
         return $responses[$message] ?? 'I\'m sorry, I didn\'t understand that. Can you please rephrase?';
