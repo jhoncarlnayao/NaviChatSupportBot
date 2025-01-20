@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Feedback;
+use App\Models\UserFeedback;
 
 class NaviBotController extends Controller
 {
@@ -12,8 +12,13 @@ class NaviBotController extends Controller
     public function handleMessage(Request $request)
     {
         $message = strtolower($request->input('message'));
-        $response = $this->generateResponse($message);
 
+        if (str_starts_with($message, 'feedback:')) {
+            UserFeedback::create(['message' => $message]);
+            return response()->json(['response' => 'Thank you for your feedback!']);
+        }
+    
+        $response = $this->generateResponse($message);
         return response()->json(['response' => $response]);
     }
 

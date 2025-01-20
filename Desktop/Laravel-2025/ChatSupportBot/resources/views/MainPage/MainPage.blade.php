@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="{{ asset('css/mainpage.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <script>
+    {{-- <script>
         window.onload = function () {
             axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         };
-    </script>
+    </script> --}}
 
 </head>
 
