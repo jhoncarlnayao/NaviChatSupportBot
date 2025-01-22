@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{{ asset('css/mainpage.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- <script>
+    {{--
+    <script>
         window.onload = function () {
             axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         };
@@ -20,7 +21,7 @@
 
 <body class=" dark:bg-neutral-900">
     <div
-    class="flex flex-col bg-white/10 backdrop-blur-md border border-white/20 shadow-sm rounded-xl dark:bg-neutral-900/30 dark:border-neutral-700 dark:shadow-neutral-700/70">
+        class="flex flex-col bg-white/10 backdrop-blur-md border border-white/20 shadow-sm rounded-xl dark:bg-neutral-900/30 dark:border-neutral-700 dark:shadow-neutral-700/70">
         <div
             class="flex flex-row items-center  bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5 dark:bg-neutral-900/20 dark:border-neutral-700">
             <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full mr-7">
@@ -47,14 +48,14 @@
             <!-- Textarea -->
             <div class="relative">
                 <textarea id="hs-textarea-ex-2"
-                    class=" p-4 pb-12 block w-full bg-gray-100 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    class="p-4 pb-12 block w-full bg-gray-100 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     placeholder="Ask me anything..." data-hs-textarea-auto-height=""></textarea>
-
+        
                 <!-- Toolbar -->
                 <div class="absolute bottom-px inset-x-px p-2 rounded-b-md bg-gray-100 dark:bg-neutral-800">
                     <div class="flex justify-between items-center">
                         <!-- Button Group -->
-                        <div class="flex items-center">
+                        <div class="flex items-center gap-x-2">
                             <!-- Mic Button -->
                             <button type="button"
                                 class="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-gray-100 focus:z-10 focus:outline-none focus:bg-gray-100 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
@@ -66,7 +67,7 @@
                                 </svg>
                             </button>
                             <!-- End Mic Button -->
-
+        
                             <!-- Attach Button -->
                             <button type="button"
                                 class="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-gray-100 focus:z-10 focus:outline-none focus:bg-gray-100 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
@@ -79,9 +80,24 @@
                                 </svg>
                             </button>
                             <!-- End Attach Button -->
+        
+                            <!-- Predefined Message Buttons -->
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="How can I book a ticket?">Book Ticket</button>
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="I lost my luggage.">Lost Luggage</button>
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="What are the available routes?">Available Routes</button>
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="What are the operating hours?">Operating Hours</button>
+                            <!-- End Predefined Message Buttons -->
                         </div>
                         <!-- End Button Group -->
-
+        
                         <!-- Button Group -->
                         <div class="flex items-center gap-x-1">
                             <!-- Mic Button -->
@@ -96,7 +112,7 @@
                                 </svg>
                             </button>
                             <!-- End Mic Button -->
-
+        
                             <!-- Send Button -->
                             <button type="button"
                                 class="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-white bg-blue-600 hover:bg-blue-500 focus:z-10 focus:outline-none focus:bg-blue-500">
@@ -116,6 +132,7 @@
             </div>
             <!-- End Textarea -->
         </div>
+        
     </div>
 
 
@@ -162,64 +179,67 @@
             </div>
         </div>
     </div>
+
+    
 </body>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+{{-- <script src="{{ asset('js/main.js') }}"> --}}
 <script>
     const chatSendRoute = "{{ route('chat.send') }}";
     const sendButton = document.getElementById('send-message');
     const messageContainer = document.getElementById('message-container');
     const textarea = document.getElementById('hs-textarea-ex-2');
 
-    sendButton.addEventListener('click', function () {
-        const message = textarea.value.trim();
-        if (message === '') return;
-
-
+    // Function to send a message
+    function sendMessage(message) {
+        if (!message) return;
 
         // ✅ User's message
-        messageContainer.innerHTML += ` <li class="flex ms-auto gap-x-2 sm:gap-x-4">
-    <div class="grow text-end space-y-3">
-        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
-        <p class="text-sm text-white">
-        ${message}
-        </p>
-    </div>
-    </div>
-    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
-    <span class="text-sm font-medium text-white leading-none"><img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full "></span>
-    </span>
-</li>`;
+        messageContainer.innerHTML += ` 
+        <li class="flex ms-auto gap-x-2 sm:gap-x-4">
+            <div class="grow text-end space-y-3">
+                <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
+                    <p class="text-sm text-white">${message}</p>
+                </div>
+            </div>
+            <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
+                <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full ">
+            </span>
+        </li>`;
 
         // ✅ Send message to backend
         axios.post(chatSendRoute, { message: message })
             .then(response => {
                 const botReply = response.data.response;
-              // ✅ Bot's response
-messageContainer.innerHTML += `<li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7 ">
-    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
-        <span class="text-xl font-medium text-white leading-none">
-            <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full ">
-        </span>
-    </span>
-    <div class="grow text-start space-y-3 ">
-        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm ">
-            <div class="text-sm text-white">
-                ${botReply}
-            </div>
-        </div>
-    </div>
-</li>`;
+                // ✅ Bot's response
+                messageContainer.innerHTML += `
+                <li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7">
+                    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
+                        <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full">
+                    </span>
+                    <div class="grow text-start space-y-3">
+                        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
+                            <div class="text-sm text-white">${botReply}</div>
+                        </div>
+                    </div>
+                </li>`;
 
                 messageContainer.scrollTop = messageContainer.scrollHeight;  // Auto-scroll
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+    }
 
-        textarea.value = '';  // Clear input
+    // ✅ Send message on button click
+    sendButton.addEventListener('click', function () {
+        const message = textarea.value.trim();
+        if (message) {
+            sendMessage(message);
+            textarea.value = '';  // Clear input
+        }
     });
 
     // ✅ Send on "Enter" key press
@@ -230,21 +250,27 @@ messageContainer.innerHTML += `<li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7 "
         }
     });
 
+    // ✅ Handle predefined message buttons
+    const predefinedMessageButtons = document.querySelectorAll('.predefined-message-btn');
+    predefinedMessageButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const predefinedMessage = button.getAttribute('data-message');
+            sendMessage(predefinedMessage);
+        });
+    });
+
     // !!! MODAL FOR INFO ICON
     const openModal = document.getElementById('info-icon');
     const closeModal = document.getElementById('close-modal-info-icon');
     const myModal = document.getElementById('modal-info-icon');
 
-
     openModal.addEventListener('click', () => {
         myModal.style.display = 'block';
     });
 
-
     closeModal.addEventListener('click', () => {
         myModal.style.display = 'none';
     });
-
 
     window.addEventListener('click', (event) => {
         if (event.target === myModal) {
@@ -252,3 +278,5 @@ messageContainer.innerHTML += `<li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7 "
         }
     });
 </script>
+
+

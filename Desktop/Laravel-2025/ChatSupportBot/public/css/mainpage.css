@@ -37,3 +37,15 @@ body {
     display: none;
     
 }
+.predefined-message-btn {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.predefined-message-btn:hover {
+    background-color: #d1d5db; /* Light gray for hover effect */
+}
+
+.dark .predefined-message-btn:hover {
+    background-color: #4b5563; /* Dark gray for hover effect */
+}
