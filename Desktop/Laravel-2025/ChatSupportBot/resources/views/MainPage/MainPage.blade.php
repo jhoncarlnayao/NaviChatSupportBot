@@ -40,7 +40,7 @@
         </div>
 
         <!-- This is where message sends -->
-        <div id="message-container">
+        <div id="message-container" class="p-4 md:p-5 space-y-4 overflow-y-auto max-h-108">
 
         </div>
 
@@ -50,7 +50,7 @@
                 <textarea id="hs-textarea-ex-2"
                     class="p-4 pb-12 block w-full bg-gray-100 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     placeholder="Ask me anything..." data-hs-textarea-auto-height=""></textarea>
-        
+
                 <!-- Toolbar -->
                 <div class="absolute bottom-px inset-x-px p-2 rounded-b-md bg-gray-100 dark:bg-neutral-800">
                     <div class="flex justify-between items-center">
@@ -67,7 +67,7 @@
                                 </svg>
                             </button>
                             <!-- End Mic Button -->
-        
+
                             <!-- Attach Button -->
                             <button type="button"
                                 class="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-gray-100 focus:z-10 focus:outline-none focus:bg-gray-100 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
@@ -80,24 +80,36 @@
                                 </svg>
                             </button>
                             <!-- End Attach Button -->
-        
+
                             <!-- Predefined Message Buttons -->
                             <button type="button"
                                 class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
                                 data-message="How can I book a ticket?">Book Ticket</button>
                             <button type="button"
                                 class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
-                                data-message="I lost my luggage.">Lost Luggage</button>
+                                data-message="Testing">Testing</button>
                             <button type="button"
                                 class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
                                 data-message="What are the available routes?">Available Routes</button>
                             <button type="button"
                                 class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
-                                data-message="What are the operating hours?">Operating Hours</button>
+                                data-message="promos for today">Promo Today</button>
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="promos for today">FAQs</button>
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="promos for today">Promo Today</button>
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="promos for today">Promo Today</button>
+                            <button type="button"
+                                class="predefined-message-btn bg-gray-200 px-3 py-1 rounded-md text-sm dark:bg-neutral-700 dark:text-white"
+                                data-message="promos for today">Promo Today</button>
                             <!-- End Predefined Message Buttons -->
                         </div>
                         <!-- End Button Group -->
-        
+
                         <!-- Button Group -->
                         <div class="flex items-center gap-x-1">
                             <!-- Mic Button -->
@@ -112,7 +124,7 @@
                                 </svg>
                             </button>
                             <!-- End Mic Button -->
-        
+
                             <!-- Send Button -->
                             <button type="button"
                                 class="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-white bg-blue-600 hover:bg-blue-500 focus:z-10 focus:outline-none focus:bg-blue-500">
@@ -132,7 +144,7 @@
             </div>
             <!-- End Textarea -->
         </div>
-        
+
     </div>
 
 
@@ -180,24 +192,30 @@
         </div>
     </div>
 
-    
+
 </body>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-{{-- <script src="{{ asset('js/main.js') }}"> --}}
-<script>
-    const chatSendRoute = "{{ route('chat.send') }}";
-    const sendButton = document.getElementById('send-message');
-    const messageContainer = document.getElementById('message-container');
-    const textarea = document.getElementById('hs-textarea-ex-2');
+{{--
+<script src="{{ asset('js/main.js') }}"> --}}
+    <script>
+        const chatSendRoute = "{{ route('chat.send') }}";
+        const sendButton = document.getElementById('send-message');
+        const messageContainer = document.getElementById('message-container');
+        const textarea = document.getElementById('hs-textarea-ex-2');
 
-    // Function to send a message
-    function sendMessage(message) {
+
+
+        // Function to send a message
+        function sendMessage(message) {
         if (!message) return;
 
+
+
+
         // ✅ User's message
-        messageContainer.innerHTML += ` 
+        messageContainer.innerHTML += `
         <li class="flex ms-auto gap-x-2 sm:gap-x-4">
             <div class="grow text-end space-y-3">
                 <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
@@ -210,66 +228,66 @@
         </li>`;
 
         // ✅ Send message to backend
-        axios.post(chatSendRoute, { message: message })
+        axios.post(chatSendRoute, {message: message })
             .then(response => {
                 const botReply = response.data.response;
-                // ✅ Bot's response
-                messageContainer.innerHTML += `
-                <li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7">
-                    <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
-                        <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full">
-                    </span>
-                    <div class="grow text-start space-y-3">
-                        <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
-                            <div class="text-sm text-white">${botReply}</div>
-                        </div>
-                    </div>
-                </li>`;
+        // ✅ Bot's response
+        messageContainer.innerHTML += `
+        <li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7">
+            <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
+                <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full">
+            </span>
+            <div class="grow text-start space-y-3">
+                <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
+                    <div class="text-sm text-white">${botReply}</div>
+                </div>
+            </div>
+        </li>`;
 
-                messageContainer.scrollTop = messageContainer.scrollHeight;  // Auto-scroll
+        messageContainer.scrollTop = messageContainer.scrollHeight;  // Auto-scroll
             })
             .catch(error => {
-                console.error('Error:', error);
+            console.error('Error:', error);
             });
     }
 
-    // ✅ Send message on button click
-    sendButton.addEventListener('click', function () {
+        // ✅ Send message on button click
+        sendButton.addEventListener('click', function () {
         const message = textarea.value.trim();
         if (message) {
             sendMessage(message);
-            textarea.value = '';  // Clear input
+        textarea.value = '';  // Clear input
         }
     });
 
-    // ✅ Send on "Enter" key press
-    textarea.addEventListener('keypress', function (e) {
+        // ✅ Send on "Enter" key press
+        textarea.addEventListener('keypress', function (e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            sendButton.click();
+        sendButton.click();
         }
     });
 
-    // ✅ Handle predefined message buttons
-    const predefinedMessageButtons = document.querySelectorAll('.predefined-message-btn');
+        // ✅ Handle predefined message buttons
+        const predefinedMessageButtons = document.querySelectorAll('.predefined-message-btn');
     predefinedMessageButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const predefinedMessage = button.getAttribute('data-message');
-            sendMessage(predefinedMessage);
-        });
+            button.addEventListener('click', function () {
+                const predefinedMessage = button.getAttribute('data-message');
+                sendMessage(predefinedMessage);
+            });
     });
 
-    // !!! MODAL FOR INFO ICON
-    const openModal = document.getElementById('info-icon');
-    const closeModal = document.getElementById('close-modal-info-icon');
-    const myModal = document.getElementById('modal-info-icon');
+        // !!! MODAL FOR INFO ICON
+        const openModal = document.getElementById('info-icon');
+        const closeModal = document.getElementById('close-modal-info-icon');
+        const myModal = document.getElementById('modal-info-icon');
 
     openModal.addEventListener('click', () => {
-        myModal.style.display = 'block';
+            myModal.style.display = 'block';
     });
 
     closeModal.addEventListener('click', () => {
-        myModal.style.display = 'none';
+            myModal.style.display = 'none';
     });
 
     window.addEventListener('click', (event) => {
@@ -277,6 +295,23 @@
             myModal.style.display = 'none';
         }
     });
+
+    // ✅ Add Greeting Message on Load
+window.addEventListener('DOMContentLoaded', () => {
+    const botGreeting = `
+        <li class="flex ms-auto gap-x-2 sm:gap-x-4 mt-7">
+            <span class="shrink-0 inline-flex items-center justify-center size-[48px] rounded-full bg-gray-600">
+                <img src="{{ asset('img/botpfp.jpg') }}" alt="" class="w-12 h-12 rounded-full">
+            </span>
+            <div class="grow text-start space-y-3">
+                <div class="inline-block bg-blue-600 rounded-2xl p-4 shadow-sm">
+                    <div class="text-sm text-white">Hello! I'm NaviChat Support bot. Welcome to the Bus Reservation System. How can I assist you today?</div>
+
+                </div>
+                <img src="{{ asset('img/greetings.gif') }}" alt="" id="bot-greeting-gif">
+            </div>
+        </li>`;
+    messageContainer.innerHTML += botGreeting;
+});
+
 </script>
-
-

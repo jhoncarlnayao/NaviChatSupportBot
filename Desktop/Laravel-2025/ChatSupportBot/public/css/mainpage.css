@@ -49,3 +49,11 @@ body {
 .dark .predefined-message-btn:hover {
     background-color: #4b5563; /* Dark gray for hover effect */
 }
+
+
+#bot-greeting-gif {
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 25pc;
+    height: 28pc;
+}
